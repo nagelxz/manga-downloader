@@ -1,34 +1,28 @@
 {
     "series": [
         {
-            "bleach": {
-                "last": "581"
-            }
+            "name": "bleach",
+            "last": "581"
         },
         {
-            "naruto": {
-                "last": "677"
-            }
+            "name": "naruto",
+            "last": "677"
         },
         {
-            "one piece": {
-                "last": "748"
-            }
+            "name": "one piece",
+            "last": "748"
         },
         {
-            "fairy tail": {
-                "last": "385"
-            }
+            "name": "fairy tail",
+            "last": "385"
         },
         {
-            "all you need is kill": {
-                "last downloaded": "014"
-            }
+            "name": "all you need is kill",
+            "last": "014"
         },
         {
-            "Shingeki no Kyojin": {
-                "last downloaded": "050"
-            }
+            "name": "Shingeki no Kyojin",
+            "last": "050"
         }
     ]
 }
