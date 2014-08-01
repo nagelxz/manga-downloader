@@ -85,7 +85,7 @@ for manga in data['series']:
 		
 		except urlError.HTTPError:
 			print ('no more chapters')
-			last_ch -= 2
+			last_ch -= 1
 			more_ch = 0
 			time.sleep(90)
 			
