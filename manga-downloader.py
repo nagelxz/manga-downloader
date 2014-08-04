@@ -6,8 +6,8 @@ from urllib import request as url
 from urllib import error as urlError
 
 base_path = '/Users/jonnagel/Documents/Personal Projects/manga-downloader/tmp/'
-# base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
-base_url = 'http://r1.goodmanga.net/images/manga/'
+base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
+# base_url = 'http://r1.goodmanga.net/images/manga/'
 data = json.loads(open(base_path + 'manga.json').read())
 
 def ch_formatter(last_ch):
@@ -36,36 +36,36 @@ for manga in data['series']:
 	if not os.path.exists(base_path + manga['name']):
 		os.makedirs(base_path + manga['name'])
 
-#	name = manga['name'].replace(' ', '-')
-	name = manga['name'].replace(' ', '_').lower()
+	name = manga['name'].replace(' ', '-')
+#	name = manga['name'].replace(' ', '_').lower()
 	last_ch = manga['last']
 	print (name + '\t' + str(last_ch))
 	last_ch += 1
 	
-#	ch = ch_formatter(last_ch)
+	ch = ch_formatter(last_ch)
 	
-#	print (ch)
-#	url_no_pg = base_url + name + '/' + name + '-' + ch + '/'
-	url_no_pg = base_url + name + '/' + str(last_ch) + '/'
+	print (ch)
+	url_no_pg = base_url + name + '/' + name + '-' + ch + '/'
+#	url_no_pg = base_url + name + '/' + str(last_ch) + '/'
 	print (url_no_pg)
 	
 	more_ch = 1
 	
 	while more_ch == 1:
-		if not os.path.exists(base_path + manga['name'] + '/' + str(last_ch)):
-			os.makedirs(base_path + manga['name'] + '/' + str(last_ch))
+		if not os.path.exists(base_path + manga['name'] + '/' + ch):
+			os.makedirs(base_path + manga['name'] + '/' + ch)
 			
 		pg_num = 1
 		
 		try:
 			while pg_num != 0:
-#				pg = pg_formatter(pg_num)
-				pg = str(pg_num)
+				pg = pg_formatter(pg_num)
+#				pg = str(pg_num)
 			
 				try:
 #					print (url_no_pg + pg + '.jpg')
-#					url.urlretrieve(url_no_pg + pg + '.jpg', base_path + pg+ '.jpg')
-					url.urlretrieve(url_no_pg + pg + '.jpg', base_path + manga['name'] + '/' + str(last_ch) + '/' + pg+ '.jpg')
+					url.urlretrieve(url_no_pg + pg + '.jpg', base_path + manga['name'] + '/' + ch + '/' + pg+ '.jpg')
+#					url.urlretrieve(url_no_pg + pg + '.jpg', base_path + manga['name'] + '/' + str(last_ch) + '/' + pg+ '.jpg')
 					print ('downloaded ' + pg + '.jpg')
 					pg_num += 1
 					time.sleep(15)
@@ -76,10 +76,10 @@ for manga in data['series']:
 						
 			last_ch += 1
 			print (name + '\t' + str(last_ch))
-#			ch = ch_formatter(last_ch)
+			ch = ch_formatter(last_ch)
 #			print (ch)
-#			url_no_pg = base_url + name + '/' + name + '-' + ch + '/'
-			url_no_pg = base_url + name + '/' + str(last_ch) + '/'
+			url_no_pg = base_url + name + '/' + name + '-' + ch + '/'
+#			url_no_pg = base_url + name + '/' + str(last_ch) + '/'
 			print (url_no_pg)
 			url.urlopen(url_no_pg + '1.jpg')
 		
