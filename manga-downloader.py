@@ -8,11 +8,6 @@ import logging.handlers
 from urllib import request as url
 from urllib import error as urlError
 
-base_path = '/Users/jonnagel/Documents/Personal Projects/manga-downloader/'
-base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
-# base_url = 'http://r1.goodmanga.net/images/manga/'
-data = json.loads(open(os.path.join(base_path, 'manga.json')).read())
-
 def set_logging():
 	serverlog = logging.FileHandler('/var/log/manga-downloader.log')
 	serverlog.setLevel(logging.INFO)
@@ -44,11 +39,20 @@ def pg_formatter(pg_num):
 		pg = str(pg_num)
 		
 	return pg
+
+#base_path = '/Users/jonnagel/Documents/Personal Projects/manga-downloader/'
+base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
+# base_url = 'http://r1.goodmanga.net/images/manga/'
+data = json.loads(open(os.path.join('manga.json')).read())
+
+base_path = data['base path']
+
+
 	
 logger = set_logging()
 logger.info('Starting a new week\'s download')
 
-print (json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
+#print (json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
 logger.info('Opening json')
 
 for manga in data['series']:
@@ -63,7 +67,7 @@ for manga in data['series']:
 #	name = manga['name'].replace(' ', '_').lower()
 	last_ch = manga['last']
 	last_ch += 1
-	print (name + '\t' + str(last_ch))
+#	print (name + '\t' + str(last_ch))
 	logger.info('getting ready for ' + name + '\t' + str(last_ch))
 	
 	ch = ch_formatter(last_ch)
@@ -91,18 +95,18 @@ for manga in data['series']:
 #					print (url_no_pg + pg + '.jpg')
 					url.urlretrieve(url_no_pg + pg + '.jpg', os.path.join(base_path, 'tmp', manga['name'], ch, pg + '.jpg'))
 #					url.urlretrieve(url_no_pg + pg + '.jpg', base_path + manga['name'] + '/' + str(last_ch) + '/' + pg+ '.jpg')
-					print ('downloaded ' + pg + '.jpg')
+#					print ('downloaded ' + pg + '.jpg')
 					logger.info('downloaded ' + pg + '.jpg')
 					pg_num += 1
 					time.sleep(8)
 				except urlError.HTTPError:
-					print ('CHAPTER DONE')
+#					print ('CHAPTER DONE')
 					logger.info('CHAPTER DONE')
 					pg_num = 0
 					time.sleep(15)
 						
 			last_ch += 1
-			print (name + '\t' + str(last_ch))
+#			print (name + '\t' + str(last_ch))
 			logger.info('getting ready for ' + name + '\t' + str(last_ch))
 	
 			ch = ch_formatter(last_ch)
@@ -111,23 +115,23 @@ for manga in data['series']:
 #			url_no_pg = base_url + name + '/' + str(last_ch) + '/'
 		
 		except urlError.HTTPError:
-			print ('no more chapters')
+#			print ('no more chapters')
 			logger.info('Nothing more in this manga to download')
 			last_ch -= 1
 			more_ch = 0
 			time.sleep(25)
 			
 	manga['last'] = last_ch
-	print (name + '\t' + str(last_ch))
+#	print (name + '\t' + str(last_ch))
 
-print ('done downloading')
+#print ('done downloading')
 logger.info('Finished required downloads...')
 
-print (json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
+#print (json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
 
 jsonfile = open(os.path.join(base_path, 'manga.json'), 'w+') 
 jsonfile.write(json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
-print ('json updated')
+#print ('json updated')
 logger.info('Updating json')
 logger.info('...')
 logger.info('...')
@@ -154,5 +158,5 @@ for dir in dirs:
 		
 shutil.rmtree(os.path.join(base_path, 'tmp'))
 logger.info('Taking out the trash. Kicking it to the curb. Sending into the abyss of nothingness')
-print ('FINISHED')
+#print ('FINISHED')
 logger.info('FINISHED....Until next week!')
