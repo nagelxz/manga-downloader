@@ -83,7 +83,7 @@ for manga in data['series']:
 		
 		try:
 			url.urlopen(url_no_pg + '01.jpg')
-			
+			time.sleep(3)
 			if not os.path.exists(os.path.join(base_path, 'tmp', manga['name'], ch)):
 				os.makedirs(os.path.join(base_path, 'tmp', manga['name'], ch))
 				logger.info('creating place for the chapter')
