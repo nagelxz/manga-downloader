@@ -28,7 +28,6 @@ def alert_of_downloads(message):
 	msg['To'] = me
 	try:
 		conn = SMTP.SMTP('smtp.gmail.com', 587)
-		conn.set_debuglevel(True)
 		conn.ehlo()
 		conn.starttls()
 		conn.ehlo()
