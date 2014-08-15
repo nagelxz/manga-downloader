@@ -1,3 +1,4 @@
+import alerter
 import os
 import time
 import json
@@ -46,7 +47,7 @@ base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
 data = json.loads(open(os.path.join('manga.json')).read())
 
 base_path = data['base path']
-
+downloaded = []
 
 	
 logger = set_logging()
@@ -102,6 +103,7 @@ for manga in data['series']:
 				except urlError.HTTPError:
 #					print ('CHAPTER DONE')
 					logger.info('CHAPTER DONE')
+					downloaded.append(manga['name'] + '   ' + str(last_ch))
 					pg_num = 0
 					time.sleep(15)
 						
@@ -158,5 +160,10 @@ for dir in dirs:
 		
 shutil.rmtree(os.path.join(base_path, 'tmp'))
 logger.info('Taking out the trash. Kicking it to the curb. Sending into the abyss of nothingness')
+
+if len(downloaded) >= 1:
+	message = alerter.build_message(downloaded)
+	alerter.alert_of_downloads(message)
+
 #print ('FINISHED')
 logger.info('FINISHED....Until next week!')
