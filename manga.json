@@ -1,24 +1,24 @@
 {
-	"base path":"/Users/jonnagel/Documents/Personal Projects/manga-downloader/",
+	"base path":"/storage/Manga/",
    "series":[
       {
-         "last": 581,
+         "last": 592,
          "name":"Bleach"
       },
       {
-         "last": 677,
+         "last": 688,
          "name":"Naruto"
       },
       {
-         "last": 748,
+         "last": 756,
          "name":"One Piece"
       },
       {
-         "last": 385,
+         "last": 395,
          "name":"Fairy Tail"
       },
       {
-         "last": 50 ,
+         "last": 59,
          "name":"Shingeki no Kyojin"
       }
    ]
