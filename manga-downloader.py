@@ -41,10 +41,10 @@ def pg_formatter(pg_num):
 		
 	return pg
 
-#base_path = '/Users/jonnagel/Documents/Personal Projects/manga-downloader/'
+json_path = '/home/nagel/manga-downloader/manga.json'
 base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
 # base_url = 'http://r1.goodmanga.net/images/manga/'
-data = json.loads(open('manga.json').read())
+data = json.loads(open(json_path).read())
 
 base_path = data['base path']
 downloaded = []
@@ -131,7 +131,7 @@ logger.info('Finished required downloads...')
 
 #print (json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
 
-jsonfile = open('manga.json', 'w+') 
+jsonfile = open(json_path, 'w+') 
 jsonfile.write(json.dumps(data, sort_keys=True,indent=3, separators=(',',':')))
 #print ('json updated')
 logger.info('Updating json')
