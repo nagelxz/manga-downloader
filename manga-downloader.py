@@ -42,8 +42,8 @@ def pg_formatter(pg_num):
 	return pg
 
 json_path = '/home/nagel/manga-downloader/manga.json'
-base_url = 'http://s9.eatmanga.com/mangas/Manga-Scan/'
-# base_url = 'http://r1.goodmanga.net/images/manga/'
+base_url = 'http://cdn.eatmanga.com/mangas/Manga-Scan/'
+#base_url = 'http://www.goodmanga.net/images/manga/'
 data = json.loads(open(json_path).read())
 
 base_path = data['base path']

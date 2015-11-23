@@ -25,15 +25,16 @@ def alert_of_downloads(message):
 	msg = MIMEText(message, 'plain')
 	msg['Subject'] = "Manga Downloads"
 	me =creds.login['email']
-	msg['To'] = me
+	msg['To'] = 'j.nagelxz@gmail.com'
+	recipients = [me]
 	try:
-		conn = SMTP.SMTP('smtp.gmail.com', 587)
+		conn = SMTP.SMTP('smtp.mailgun.org', 587)
 		conn.ehlo()
 		conn.starttls()
 		conn.ehlo()
 		conn.login(creds.login['email'], creds.login['password'])
 		try:
-			conn.sendmail(me, me, msg.as_string())
+			conn.sendmail(me, recipients, msg.as_string())
 		finally:
 			conn.close()
 

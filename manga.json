@@ -1,25 +1,33 @@
 {
-	"base path":"/storage/Manga/",
+   "base path":"/storage/Manga/",
    "series":[
       {
-         "last": 592,
+         "last":652,
          "name":"Bleach"
       },
       {
-         "last": 688,
-         "name":"Naruto"
-      },
-      {
-         "last": 756,
+         "last":807,
          "name":"One Piece"
       },
       {
-         "last": 395,
+         "last":462,
          "name":"Fairy Tail"
       },
       {
-         "last": 59,
+         "last":75,
          "name":"Shingeki no Kyojin"
+      },
+      {
+         "last":349,
+         "name":"Hunter X Hunter"
+      },
+      {
+         "last":150,
+         "name":"Nanatsu No Taizai"
+      },
+      {
+         "last":191,
+         "name":"I Am A Hero"
       }
    ]
 }
