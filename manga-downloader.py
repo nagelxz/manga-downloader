@@ -147,7 +147,7 @@ for dir in dirs:
 	for ch in chapters:
 		pgs = [p for p in os.listdir(os.path.join(base_path, 'tmp', dir, ch)) if os.path.isfile(os.path.join(base_path, 'tmp', dir, ch, p))]
 			
-		zip = zipfile.ZipFile(os.path.join(base_path, 'done', dir, ch + '.cbz'), 'w')	
+		zip = zipfile.ZipFile(os.path.join(base_path, 'done', dir, ch + '.cbz'), 'w', zipfile.ZIP_DEFLATED)	
 		logger.info('Creating Zip file: ' + os.path.join(base_path, 'done', dir, ch + '.cbz'))
 		for pg in pgs:
 			if len(pgs) != 0:
