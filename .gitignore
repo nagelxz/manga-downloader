@@ -52,3 +52,7 @@ coverage.xml
 # Sphinx documentation
 docs/_build/
 
+credentials.py
+goodmanga-zipper.py
+goodmanga.json
+manga-downloader-goodmanga.py
