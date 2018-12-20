@@ -6,7 +6,7 @@ import credentials as creds
 def build_message(arr):
 	arr.sort()
 	
-	message = ''' Shittyserver has downloaded the following items to be read.
+	message = ''' Gizmo has downloaded the following items to be read.
 Please enjoy them at your leisure
 -----------------------------------
 	 '''

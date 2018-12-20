@@ -2,19 +2,19 @@
    "base path":"/storage/Manga/",
    "series":[
       {
-         "last":666,
+         "last":686,
          "name":"Bleach"
       },
       {
-         "last":820,
+         "last":841,
          "name":"One Piece"
       },
       {
-         "last":478,
+         "last":503,
          "name":"Fairy Tail"
       },
       {
-         "last":79,
+         "last":85,
          "name":"Shingeki no Kyojin"
       },
       {
@@ -22,12 +22,16 @@
          "name":"Hunter X Hunter"
       },
       {
-         "last":167,
+         "last":193,
          "name":"Nanatsu No Taizai"
       },
       {
          "last":24,
          "name":"Appleseed"
+      },
+      {
+         "last":94,
+         "name":"Onepunch Man"
       }
    ]
 }
