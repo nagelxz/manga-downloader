@@ -64,7 +64,7 @@ for manga in data['series']:
 		os.makedirs(os.path.join(base_path, 'done', manga['name']))
 		logger.info('This (' + manga['name'] + ') must be new. Creating place for it to be stored...')
 
-	name = manga['name'].replace(' ', '_').lower()
+	name = manga['name'].replace(' ', '-').lower()
 	last_ch = manga['last']
 	last_ch += 1
 	print (name + '\t' + str(last_ch))
@@ -82,7 +82,7 @@ for manga in data['series']:
 		try:
 			requesting = url.Request(url_no_pg + '1.jpg', data=None, headers={'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:63.0) Gecko/20100101 Firefox/63.0'})
 			url.urlopen(requesting)
-			time.sleep(2)
+			time.sleep(3)
 			if not os.path.exists(os.path.join(base_path, 'tmp', manga['name'], ch)):
 				os.makedirs(os.path.join(base_path, 'tmp', manga['name'], ch))
 				logger.info('creating place for the chapter')
@@ -101,13 +101,22 @@ for manga in data['series']:
 #					print ('downloaded ' + pg + '.jpg')
 					logger.info('downloaded ' + pg + '.jpg')
 					pg_num += 1
-					time.sleep(2)
+					time.sleep(8)
+				except urlError.ContentTooShortError:
+					print("hiccup, retying")
+					logger.info('issue getting file. trying again.')
+					url.install_opener(opener)
+					url.urlretrieve(url_no_pg + pg + '.jpg', os.path.join(base_path, 'tmp', manga['name'], ch, dl_pg + '.jpg'))
+					logger.info('downloaded ' + pg + '.jpg')
+					pg_num += 1
+					time.sleep(8)
+
 				except urlError.HTTPError:
 					print ('CHAPTER DONE')
 					logger.info('CHAPTER DONE')
 					downloaded.append(manga['name'] + '   ' + str(last_ch))
 					pg_num = 0
-					time.sleep(4)
+					time.sleep(15)
 						
 			last_ch += 1
 #			print (name + '\t' + str(last_ch))
@@ -122,7 +131,7 @@ for manga in data['series']:
 			logger.info('Nothing more in this manga to download')
 			last_ch -= 1
 			more_ch = 0
-			time.sleep(10)
+			time.sleep(15)
 			
 	manga['last'] = last_ch
 #	print (name + '\t' + str(last_ch))
